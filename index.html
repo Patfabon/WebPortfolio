@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrick Fabon | Portfolio</title>
+<style>
+:root {
+  --bg: #faf7f2;
+  --beige: #e8ddce;
+  --brown: #85715d;
+  --dark: #342d27;
+  --white: #fffefa;
+  --muted: #7b7167;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+a { text-decoration: none; color: inherit; }
+.container { width: 88%; max-width: 1100px; margin: auto; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,247,242,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e8ded2;
+}
+.navbar {
+  min-height: 76px; display: flex;
+  justify-content: space-between; align-items: center;
+}
+.logo { font-family: Georgia, serif; font-size: 23px; }
+.logo span { color: var(--brown); }
+.nav-links { display: flex; gap: 25px; font-size: 13px; }
+.nav-links a:hover { color: var(--brown); }
+.menu { display: none; cursor: pointer; border: 0; background: none; font-size: 25px; }
+
+.hero {
+  min-height: 88vh; display: flex; align-items: center;
+  padding: 80px 0;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.1fr .9fr;
+  align-items: center; gap: 50px;
+}
+.eyebrow {
+  text-transform: uppercase; letter-spacing: 3px;
+  color: var(--brown); font-size: 11px; font-weight: bold;
+}
+h1, h2 { font-family: Georgia, serif; font-weight: normal; }
+h1 { font-size: clamp(42px, 6vw, 70px); line-height: 1.12; margin: 22px 0; }
+h1 em { color: var(--brown); }
+.hero p { max-width: 500px; color: var(--muted); margin-bottom: 28px; }
+.buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 12px 21px;
+  border: 1px solid var(--dark); border-radius: 30px;
+  font-size: 13px; transition: .25s;
+}
+.btn.primary { background: var(--dark); color: white; }
+.btn:hover { transform: translateY(-3px); }
+.hero-art {
+  background: var(--beige); border-radius: 48% 48% 18px 18px;
+  min-height: 390px; display: flex; align-items: center;
+  justify-content: center; padding: 25px;
+}
+.laptop {
+  background: var(--white); padding: 18px; width: 100%;
+  max-width: 350px; border-radius: 12px;
+  box-shadow: 0 20px 45px #7a63451c; transform: rotate(2deg);
+}
+.laptop h3 { font: 20px Georgia, serif; margin-bottom: 15px; }
+.fake-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px; margin: 7px 0;
+}
+.fake-row span { height: 18px; background: #eee5d9; border-radius: 3px; }
+.fake-row:first-of-type span { background: #c7b49c; }
+
+section { padding: 95px 0; }
+.section-label {
+  text-transform: uppercase; letter-spacing: 3px;
+  color: var(--brown); font-size: 11px; font-weight: bold;
+  margin-bottom: 20px;
+}
+h2 { font-size: clamp(34px, 4vw, 48px); margin-bottom: 18px; line-height: 1.2; }
+.intro { max-width: 650px; color: var(--muted); margin-bottom: 38px; }
+.about-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 55px; align-items: center; }
+
+.initials {
+  background: var(--beige);
+  width: 100%;
+  max-width: 290px;
+  height: 370px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden; 
+}
+
+.initials img {
+  width: 100%;
+  height: 150%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+
+}
+.about-text p { color: var(--muted); margin-bottom: 16px; }
+.skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.skills span {
+  border: 1px solid #ded1c1; border-radius: 30px;
+  padding: 6px 13px; font-size: 12px;
+}
+
+.services-section { background: #f0e9df; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.card {
+  background: var(--white); border: 1px solid #e7ddd1;
+  border-radius: 14px; padding: 23px 18px;
+  transition: .25s;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px #6d574015; }
+.card .icon { font-size: 26px; margin-bottom: 17px; }
+.card h3 { font-size: 15px; margin-bottom: 10px; }
+.card p { font-size: 12px; color: var(--muted); }
+
+.projects { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.project { border: 1px solid #e5dbcf; border-radius: 15px; overflow: hidden; background: var(--white); }
+.project-preview { background: var(--beige); padding: 25px; }
+.sheet {
+  background: white; padding: 17px; border-radius: 8px;
+  box-shadow: 0 10px 25px #59452b12;
+}
+.sheet h3 { font: 20px Georgia, serif; margin-bottom: 15px; }
+.sheet-row {
+  display: grid; grid-template-columns: 1fr 1fr .7fr;
+  gap: 5px; margin: 6px 0;
+}
+.sheet-row span { height: 13px; background: #eee7de; border-radius: 2px; }
+.sheet-row.header span { background: #b9a58e; }
+.sheet-total {
+  background: #f3ede5; margin-top: 13px; padding: 10px;
+  font-size: 11px; display: flex; justify-content: space-between;
+}
+.project-info { padding: 23px; }
+.project-info small { color: var(--brown); text-transform: uppercase; letter-spacing: 2px; }
+.project-info h3 { font: 24px Georgia, serif; margin: 9px 0; }
+.project-info p { color: var(--muted); font-size: 13px; margin-bottom: 15px; }
+.tag {
+  display: inline-block; padding: 4px 8px; background: #f0e9df;
+  font-size: 10px; border-radius: 4px; margin: 3px;
+}
+.notice { font-size: 11px; color: var(--muted); margin-top: 22px; }
+
+.steps { background: #f0e9df; }
+.steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 25px; }
+.step { border-top: 1px solid #bca58b; padding-top: 15px; }
+.step strong { font: 26px Georgia, serif; color: var(--brown); }
+.step h3 { font-size: 15px; margin: 10px 0 5px; }
+.step p { color: var(--muted); font-size: 12px; }
+
+.contact-box {
+  background: var(--dark); color: white; padding: 55px;
+  border-radius: 20px; text-align: center;
+}
+.contact-box .section-label { color: #d8c4ac; }
+.contact-box p { color: #d0c5b8; margin-bottom: 24px; }
+.contact-box .btn { border-color: white; color: white; }
+footer { padding: 25px 0; color: var(--muted); font-size: 11px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 15px; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: .7s; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+@media(max-width: 800px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .hero { padding: 65px 0; }
+  .hero-art { min-height: 300px; }
+  .grid-4, .steps-grid { grid-template-columns: repeat(2,1fr); }
+  .about-grid { gap: 25px; }
+}
+@media(max-width: 560px) {
+  .container { width: 90%; }
+  .menu { display: block; }
+  .nav-links {
+    display: none; position: absolute; top: 75px; left: 0;
+    width: 100%; background: var(--bg); padding: 22px 5%;
+    flex-direction: column; gap: 15px; border-bottom: 1px solid #e8ded2;
+  }
+  .nav-links.open { display: flex; }
+  .grid-4, .projects, .steps-grid { grid-template-columns: 1fr; }
+  section { padding: 70px 0; }
+  .contact-box { padding: 35px 20px; }
+  .footer-inner { flex-direction: column; }
+}
+
+.tax-summary {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tax-summary h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.tax-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+.tax-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  font-size: 11px;
+  text-align: right;
+  color: var(--brown);
+}
+
+.tax-table th,
+.tax-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e8ded2;
+  white-space: nowrap;
+}
+
+.tax-table th {
+  background: var(--beige);
+  font-size: 10px;
+  text-align: right;
+}
+
+.tax-table th:first-child,
+.tax-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+.tax-table .tax-total {
+  background: #f3e9dc;
+  font-weight: 700;
+}
+
+/* Transaction Register */
+.transaction-sheet {
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.transaction-sheet h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.transaction-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+  border-radius: 8px;
+  font: #463b32;
+}
+
+.transaction-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  font-size: 11px;
+  text-align: right;
+  color: #463b32;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 10px 8px;
+  bottom-border: 1px solid #e8ded2;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.transaction-table th {
+  background: var(--beige);
+  font-size: 10px;
+  text-align: right;
+}
+
+.transaction-table td.amount,
+.transaction-table th.amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+  background: #f3e9dc;
+}
+
+@media (max-width: 560px) {
+  .project-preview {
+    padding: 14px;
+  }
+
+  .transaction-sheet {
+    padding: 12px;
+  }
+}
+
+/* Make the new Data Entry table span the full portfolio width */
+.project-full {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.project-full .project-info {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.full-tax-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid #e5dbcf;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.full-tax-table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  font-size: 11px;
+}
+
+.full-tax-table th,
+.full-tax-table td {
+  padding: 10px 12px;
+  border: 1px solid #e5dbcf;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.full-tax-table th {
+  background: #eee5d9;
+  text-align: center;
+  white-space: normal;
+  min-width: 85px;
+}
+
+.full-tax-table td:nth-child(-n+5) {
+  text-align: left;
+}
+
+.full-tax-table tbody tr:nth-child(even) {
+  background: #faf7f2;
+}
+
+@media (max-width: 768px) {
+  .project-full {
+    grid-column: 1 / -1;
+  }
+
+  .full-tax-table {
+    font-size: 10px;
+  }
+}
+.project-full {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.project-full .project-info {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tax-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 24px;
+  border: 1px solid #e4d9cc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.detailed-tax-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  color: #463b32;
+}
+
+.detailed-tax-table th,
+.detailed-tax-table td {
+  padding: 10px 12px;
+  border: 1px solid #e4d9cc;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.detailed-tax-table th {
+  background: #eee5d9;
+  font-weight: 600;
+  text-align: center;
+  white-space: normal;
+  min-width: 85px;
+}
+
+.detailed-tax-table th[rowspan="2"]:nth-child(-n+5),
+.detailed-tax-table td:nth-child(-n+5) {
+  text-align: left;
+}
+
+.detailed-tax-table tbody tr:nth-child(even) {
+  background: #faf7f2;
+}
+
+.detailed-tax-table tbody tr:hover {
+  background: #f0e7dc;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+/* Cover the entire project card with beige */
+.project {
+  background-color: #e8ddcd;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make the preview background fill its entire area */
+.project-preview {
+  background-color: #e8ddcd;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 25px;
+}
+
+/* Keep the white table area inside the beige background */
+.project-preview .sheet,
+.project-preview .table-container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Prevent extra white space from overflowing */
+.project,
+.project-preview,
+.project-info {
+  min-width: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin: 25px auto;
+  text-align: left;
+}
+
+.contact-form label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ded1c1;
+  border-radius: 8px;
+  background: #fff;
+  color: #463b32;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button[type="submit"] {
+  color: #ffffff !important;
+  background-color: #8b5e3c;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container navbar">
+    <a href="#home" class="logo">Patrick Fabon<span>.</span></a>
+    <button class="menu" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Data Entry Specialist · Virtual Assistant</div>
+      <h1>Turning information into <em>organized, reliable work.</em></h1>
+      <p>Hi, I'm Patrick Fabon. I help keep data accurate, spreadsheets organized, and reports clear through dependable administrative support.</p>
+      <div class="buttons">
+        <a href="#portfolio" class="btn primary">Explore my work ↗</a>
+        <a href="#contact" class="btn">Get in touch</a>
+      </div>
+      <div class="micro-note">DETAIL-ORIENTED · ORGANIZED · READY TO LEARN</div>
+    </div>
+    <div class="hero-art">
+      <div class="laptop">
+        <h3>Transaction Register</h3>
+        <div class="fake-row"><span></span><span></span><span></span></div>
+        <div class="fake-row"><span></span><span></span><span></span></div>
+        <div class="fake-row"><span></span><span></span><span></span></div>
+        <div class="fake-row"><span></span><span></span><span></span></div>
+        <div class="fake-row"><span></span><span></span><span></span></div>
+        <div class="sheet-total"><span>Grand Total</span><strong>₱13,275.50</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-label">A little about me</div>
+    <div class="about-grid">
+      <div class="initials reveal">
+        <img src="picture.jpg" alt="My Profile Picture">
+      </div>
+      <div class="about-text reveal">
+        <h2>Reliable support starts with the details.</h2>
+        <p>I have hands-on experience in government data entry, encoding and organizing records, preparing collection and deposit reports, and compiling monthly totals.</p>
+        <p>My experience has taught me the importance of accuracy, consistency, following procedures, and handling information responsibly. I'm now bringing these transferable skills to freelance data-entry and virtual assistant opportunities.</p>
+        <p>I'm eager to support clients, learn new systems, and help make everyday administrative work more organized and efficient.</p>
+        <div class="skills">
+          <span>Data Entry</span><span>Microsoft Excel</span><span>Report Preparation</span>
+          <span>Record Organization</span><span>Attention to Detail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-label">What I can help with</div>
+    <h2>Services & skills</h2>
+    <p class="intro">Practical administrative support to keep your information organized and your routine tasks moving.</p>
+    <div class="grid-4">
+      <article class="card reveal">
+        <div class="icon">⌨</div>
+        <h3>Data Entry</h3>
+        <p>Accurate encoding, updating records, and maintaining consistent data formats.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">▦</div>
+        <h3>Excel & Spreadsheets</h3>
+        <p>Organized tables, sorting, filtering, basic formulas, and spreadsheet cleanup.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">▤</div>
+        <h3>Report Preparation</h3>
+        <p>Clear summaries, transaction records, monthly totals, and readable reports.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">✧</div>
+        <h3>Admin Support</h3>
+        <p>Document formatting, digital file organization, and routine office assistance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label">Selected work</div>
+    <h2>Portfolio projects</h2>
+    <p class="intro">A few examples of how I approach data organization and reporting. These are demonstration projects using fictional information.</p>
+    <div class="projects">
+      
+<article class="project reveal">
+  <div class="project-preview">
+    <div class="sheet transaction-sheet">
+      <h3>Transmittal of Paid Vouchers</h3>
+      <small style="color:#85715d">
+        SAMPLE DISBURSEMENT RECORDS · OCTOBER 2026
+      </small>
+
+      <div class="transaction-table-wrap">
+        <table class="transaction-table">
+          <thead>
+            <tr>
+              <th>DATA</th>
+              <th>NO.</th>
+              <th>DV NO.</th>
+              <th>RESPONSIBILITY</th>
+              <th>PAYEE</th>
+              <th>NATURE OF PAYMENT</th>
+              <th class="amount">AMOUNT</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>10/12/2026</td>
+              <td>244369</td>
+              <td>100-2026-10-3658</td>
+              <td>7611</td>
+              <td>JANNA B. BERTOS</td>
+              <td>AICS - medical assistance</td>
+              <td class="amount">2,500.00</td>
+            </tr>
+
+            <tr>
+              <td>10/13/2026</td>
+              <td>244403</td>
+              <td>100-2026-10-3692</td>
+              <td>1022</td>
+              <td>RODEN C. ACILO</td>
+              <td>Travelling expenses</td>
+              <td class="amount">750.00</td>
+            </tr>
+
+            <tr>
+              <td>10/12/2026</td>
+              <td>244365</td>
+              <td>100-2026-10-3654</td>
+              <td>4411</td>
+              <td>JOHN MARK L. ARRABIS</td>
+              <td>Travel expenses</td>
+              <td class="amount">1,200.00</td>
+            </tr>
+
+            <tr>
+              <td>10/13/2026</td>
+              <td>244386</td>
+              <td>100-2026-10-3675</td>
+              <td>1011B</td>
+              <td>GIOVANNI G. OLO</td>
+              <td>Telephone exp. September 2026</td>
+              <td class="amount">2,000.00</td>
+            </tr>
+
+            <tr>
+              <td>10/13/2026</td>
+              <td>244398</td>
+              <td>100-2026-10-3687</td>
+              <td>7611</td>
+              <td>MERCEDITA A. DONGON</td>
+              <td>AICS - burial assistance</td>
+              <td class="amount">2,000.00</td>
+            </tr>
+
+            <tr>
+              <td>10/14/2026</td>
+              <td>244411</td>
+              <td>100-2026-10-3700</td>
+              <td>7611</td>
+              <td>NENITA S. RECTO</td>
+              <td>AICS - burial assistance</td>
+              <td class="amount">2,000.00</td>
+            </tr>
+
+            <tr>
+              <td>10/06/2026</td>
+              <td>244252</td>
+              <td>100-2026-10-3541</td>
+              <td>7611</td>
+              <td>CRISTITA L. ASTIGUE</td>
+              <td>AICS - medical assistance</td>
+              <td class="amount">3,500.00</td>
+            </tr>
+
+            <tr>
+              <td>10/07/2026</td>
+              <td>244280</td>
+              <td>100-2026-10-3569</td>
+              <td>7611</td>
+              <td>LENARD CAANTOC</td>
+              <td>AICS - medical assistance</td>
+              <td class="amount">2,500.00</td>
+            </tr>
+
+            <tr>
+              <td>10/05/2026</td>
+              <td>244197</td>
+              <td>100-2026-10-3486</td>
+              <td>7611</td>
+              <td>JOVELYN B. SUAYBAGUIO</td>
+              <td>AICS - medical assistance</td>
+              <td class="amount">2,500.00</td>
+            </tr>
+
+            <tr>
+              <td>10/06/2026</td>
+              <td>244249</td>
+              <td>100-2026-10-3538</td>
+              <td>7611</td>
+              <td>ESAIAH MAYNARD JAY P. ROSELL</td>
+              <td>AICS - medical assistance</td>
+              <td class="amount">4,000.00</td>
+            </tr>
+
+            <tr>
+              <td>10/06/2026</td>
+              <td>244251</td>
+              <td>100-2026-10-3540</td>
+              <td>7611</td>
+              <td>NENA D. ABREO</td>
+              <td>AICS - medical assistance</td>
+              <td class="amount">4,000.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="project reveal">
+        <div class="project-preview">
+          
+<div class="sheet tax-summary">
+  <h3>Real Property Tax Collection Summary</h3>
+  <small style="color:#85715d">COLLECTION REPORT</small>
+ 
+  <div class="tax-table-wrapper">
+    <table class="tax-table">
+      <thead>
+        <tr>
+          <th>PARTICULARS</th>
+          <th>AGRICULTURAL</th>
+          <th>RESIDENTIAL</th>
+          <th>COMMERCIAL</th>
+          <th>SPECIAL</th>
+          <th>INDUSTRIAL</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CURRENT YR.</td>
+          <td>12,977.20</td>
+          <td>20,187.80</td>
+          <td>14,860.60</td>
+          <td>—</td>
+          <td>235.80</td>
+          <td>48,261.40</td>
+        </tr>
+        <tr>
+          <td>DISCOUNT</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>—</td><td>—</td>
+        </tr>
+        <tr class="tax-total">
+          <td>TOTAL</td>
+          <td>12,977.20</td>
+          <td>20,187.80</td>
+          <td>14,860.60</td>
+          <td>—</td>
+          <td>235.80</td>
+          <td>48,261.40</td>
+        </tr>
+        <tr>
+          <td>PREV. YR.</td>
+          <td>6,989.80</td>
+          <td>21,420.50</td>
+          <td>610.40</td>
+          <td>—</td><td>—</td>
+          <td>29,020.70</td>
+        </tr>
+        <tr>
+          <td>PENALTY</td>
+          <td>1,277.75</td>
+          <td>1,997.01</td>
+          <td>1,486.06</td>
+          <td>—</td>
+          <td>23.58</td>
+          <td>4,784.40</td>
+        </tr>
+        <tr>
+          <td>PENALTY PREV.</td>
+          <td>1,868.21</td>
+          <td>5,100.19</td>
+          <td>360.13</td>
+          <td>—</td><td>—</td>
+          <td>7,328.53</td>
+        </tr>
+        <tr>
+          <td>ADVANCE PAYMENT</td>
+          <td>—</td>
+          <td>162.80</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td>162.80</td>
+        </tr>
+        <tr>
+          <td>DISCOUNT</td>
+          <td>—</td>
+          <td>-32.56</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td>-32.56</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+        </div>
+      </article>
+
+<!-- DATA ENTRY & MONTHLY TRANSACTION -->
+<article class="project reveal project-full">
+  <div class="project-info">
+    <h3>Data Entry & Monthly Transaction</h3>
+    <p>
+      A detailed real property tax register organizing collection dates,
+      collector names, classifications, official receipt numbers, barangays,
+      basic tax, penalties, and grand totals in a structured table.
+    </p>
+
+    <div class="full-tax-table-wrap">
+          <table class="full-tax-table">
+            <thead>
+              <tr><th rowspan="2">Date</th><th rowspan="2">Collector</th><th rowspan="2">Classification</th><th rowspan="2">OR Number</th><th rowspan="2">Name of Barangay</th><th colspan="13">Basic Tax</th><th colspan="10">Basic Penalty</th><th rowspan="2">Basic Penalty Total</th><th rowspan="2">Grand Total</th></tr>
+              <tr><th>Advance Payment 2027</th><th>Discount</th><th>Current Year 2026</th><th>Discount</th><th>Prev. Yr. 2025</th><th>Prev. Yr. 2024</th><th>Prev. Yr. 2023</th><th>Prev. Yr. 2022</th><th>Prev. Yr. 2021</th><th>Prev. Yr. 2020</th><th>Prev. Yr. 2019</th><th>Prev. Yr. 2018</th><th>Prev. Yr. 2017</th><th>Current Year 2026</th><th>Prev. Yr. 2025</th><th>Prev. Yr. 2024</th><th>Prev. Yr. 2023</th><th>Prev. Yr. 2022</th><th>Prev. Yr. 2021</th><th>Prev. Yr. 2020</th><th>Prev. Yr. 2019</th><th>Prev. Yr. 2018</th><th>Prev. Yr. 2017</th></tr>
+            </thead><tbody>
+              <tr><td>02/26/2026</td><td>INDAY</td><td>AGRI</td><td>2979313</td><td>CONCEPCION</td><td></td><td></td><td>33.80</td><td>6.76</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>27.04</td><td>54.08</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979314</td><td>STO. NIÑO</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>135.30</td><td>135.30</td><td>135.30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>405.90</td><td>811.80</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979315</td><td>STO. NIÑO</td><td></td><td></td><td></td><td></td><td></td><td>135.30</td><td>135.30</td><td>135.30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>70.36</td><td></td><td></td><td>476.26</td><td>952.52</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979316</td><td>STO. NIÑO</td><td></td><td></td><td>135.30</td><td>27.06</td><td>135.30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>37.88</td><td></td><td></td><td></td><td></td><td>281.42</td><td>562.84</td></tr>
+              <tr><td></td><td>INDAY</td><td>RES</td><td>2979317</td><td>LUNANG</td><td></td><td></td><td>96.80</td><td>19.36</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>77.44</td><td>154.88</td></tr>
+              <tr><td></td><td>INDAY</td><td>RES</td><td>2979318</td><td>LUNANG</td><td></td><td></td><td>242.60</td><td>48.52</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>194.08</td><td>388.16</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979319</td><td>STO. NIÑO</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>123.40</td><td>123.40</td><td>123.40</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>370.20</td><td>740.40</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979320</td><td>STO. NIÑO</td><td></td><td></td><td></td><td></td><td></td><td>123.40</td><td>123.40</td><td>123.40</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>64.17</td><td></td><td></td><td>434.37</td><td>868.74</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979321</td><td>STO. NIÑO</td><td></td><td></td><td>123.40</td><td>24.68</td><td>123.40</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>34.55</td><td></td><td></td><td></td><td></td><td>256.67</td><td>513.34</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979322</td><td>STO. NIÑO</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>65.50</td><td>65.50</td><td>65.50</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>196.50</td><td>393.00</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979323</td><td>STO. NIÑO</td><td></td><td></td><td></td><td></td><td></td><td>65.50</td><td>65.50</td><td>65.50</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>34.06</td><td></td><td></td><td>230.56</td><td>461.12</td></tr>
+              <tr><td></td><td>INDAY</td><td>AGRI</td><td>2979324</td><td>STO. NIÑO</td><td></td><td></td><td>65.50</td><td>13.10</td><td>65.50</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>18.34</td><td></td><td></td><td></td><td></td><td>136.24</td><td>272.48</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+    <div class="project-tags">
+      <span class="tag">Data Entry</span>
+      <span class="tag">Excel Reporting</span>
+      <span class="tag">Tax Collection Records</span>
+      <span class="tag">Data Organization</span>
+    </div>
+  </div>
+</article>
+
+    </div>
+    <p class="notice">Note: These are sample projects created for portfolio purposes, not client work or actual government records.</p>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="container">
+    <div class="section-label">My work process</div>
+    <h2>Simple, careful, consistent.</h2>
+    <p class="intro">I focus on clear instructions, organized work, and checking details before delivery.</p>
+    <div class="steps-grid">
+      <div class="step reveal"><strong>01</strong><h3>Understand</h3><p>Confirm the task, requirements, format, and deadline.</p></div>
+      <div class="step reveal"><strong>02</strong><h3>Organize</h3><p>Arrange information into a clear and consistent structure.</p></div>
+      <div class="step reveal"><strong>03</strong><h3>Check</h3><p>Review entries, formatting, formulas, and missing information.</p></div>
+      <div class="step reveal"><strong>04</strong><h3>Submit</h3><p>Return organized work and communicate any questions clearly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div class="section-label">Let's connect</div>
+      <h2>Let's work together!</h2>
+      <p>Have a project in mind? Send me a message.</p>
+
+      <form
+        action="https://formspree.io/f/xljjbylz"
+        method="POST"
+        class="contact-form"
+      >
+        <label for="name">Your Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          required
+        >
+
+        <label for="email">Your Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email address"
+          required
+        >
+
+        <label for="message">Your Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="How can I help you?"
+          required
+        ></textarea>
+
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Portfolio Inquiry"
+        >
+
+        <button type="submit" class="btn"> Send Message ↗</button>
+      </form>
+
+      <p>
+        Prefer email?
+        <a class="btn" href="mailto:patfabon@gmail.com?subject=Virtual%20Assistant%20Inquiry"> Email me ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Patrick Fabon. Portfolio website.</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("open");
+}
+function closeMenu() {
+  document.getElementById("navLinks").classList.remove("open");
+}
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
